@@ -12,17 +12,18 @@ Cypress.Commands.add('token', (email, senha) => {
     })
  })
 
- Cypress.Commands.add('cadastrarProduto' , (token, produto, preco, descricao, quantidade) =>{
+ Cypress.Commands.add('cadastrarUsuario' , (usuario, email, senha, adm) =>{
     cy.request({
-        method: 'POST', 
-        url: 'produtos',
-        headers: {authorization: token}, 
+        method: 'POST',
+        url:'usuarios',
         body: {
-            "nome": produto,
-            "preco": preco,
-            "descricao": descricao,
-            "quantidade": quantidade
-          }, 
-          failOnStatusCode: false
+          "nome": usuario,
+          "email": email,
+          "password": senha,
+          "administrador": adm
+          
+        }, 
+        failOnStatusCode: false
+      })
+        
     })
- })
